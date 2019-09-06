@@ -1,0 +1,24 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <input type="text" placeholder="E-mail"
+             class="form-control" [(ngModel)]="userEmail" name="email" #fieldEmail="ngModel" email>
+      <p *ngIf="fieldEmail.errors?.email"><small>Please enter a valid email address</small></p><br>
+      <input type="login" placeholder="Login"
+             class="form-control" [(ngModel)]="login" name="login" id="login" #fieldLogin="ngModel" required/>
+      <p *ngIf="fieldLogin.errors?.required"><small>Minimum length 6 characters</small></p><br>
+
+      <input type="name" placeholder="Name"
+             class="form-control" [(ngModel)]="name" name="name"><br>
+
+      <input type="password" placeholder="Password"
+             class="form-control" ngModel name="password" #fieldPassword="ngModel" required/>
+      <p *ngIf="fieldPassword.errors?.required"><small>Minimum length 6 characters</small></p><br>
+      <input type="password" placeholder="Confirm password"
+             class="form-control" ngModel name="certainPassword" #certainPassword="ngModel" [equalTo]="fieldPassword"/>
+      <p *ngIf="certainPassword.errors?.equalTo"><small>Passwords do not match</small></p><br>
+    </div>
+  </form>
+  <button class="btn btn-success" routerLink="/main" (click)="register(login, password)">Register</button> <mark></mark>
+  <button class="btn btn-danger" routerLink="/">Cancel</button>
+</div>
