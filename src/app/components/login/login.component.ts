@@ -1,24 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService} from '../../auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: Form;
+  login = '';
+  password = '';
+  constructor(private authService: AuthService) {
 
-  constructor() {}
-
-  printForm() {
-    console.log(this.loginForm);
   }
-
+  // authorization(login, password) {
+  //   // if (localStorage.getItem(login) === password) {
+  //   //   console.log(true);
+  //   // } else {
+  //   //   console.log(false);
+  //   // }
+  //   // console.log(login, password);
+  //   if (localStorage.getItem(login) === password) {
+  //     this.isAuthorized = true;
+  //   } else {
+  //     console.log(false);
+  //   }
+  // }
   ngOnInit() {
   }
-}
-
-interface Form {
-  login: string;
-  password: string;
+  Login() {
+    console.log('you are logging in')
+    this.authService.login(this.login, this.password);
+  }
 }

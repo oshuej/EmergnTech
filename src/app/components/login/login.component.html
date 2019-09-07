@@ -1,11 +1,16 @@
+<div style="text-align: center">
+  <h3>Sign in</h3>
+</div>
 <div class="container">
   <form>
     <div class="form-group">
       <input type="text" placeholder="Login"
-             class="form-control" [(ngModel)]="loginForm.login" id="login" name="login"><br>
-      <input type="password" placeholder="Password"
-             class="form-control" [(ngModel)]="loginForm.password" name="password">
+             class="form-control" [(ngModel)]="login" id="login" name="login"><br>
+      <input type="text" placeholder="Password"
+             class="form-control" [(ngModel)]="password" name="password">
     </div>
   </form>
-  <button (click)="printForm()" type="button" class="btn btn-success">Sign in</button>
+</div>
+<div style="text-align:center">
+  <button (click)="Login()" type="button" class="btn btn-success">Sign in</button>
 </div>

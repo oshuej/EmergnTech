@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-registration',
@@ -10,11 +10,13 @@ export class RegistrationComponent implements OnInit {
   login: string;
   name: string;
   password: string;
+  @Input() isLogin: boolean;
   constructor() { }
 
   ngOnInit() {
   }
   register(login, password) {
     localStorage.setItem(login, password);
+    this.isLogin = true;
   }
 }

@@ -1,16 +1,7 @@
 button {
-  margin-right: 10px;
-}
-
-.btn-sm{
-  font-size: 0.8em;
-  padding: 5px;
-  line-height: 8px;
+  width: 100px;
 }
 
 .container {
   margin-bottom: 50px;
 }
-
-input.ng-touched.ng-invalid {border:solid red 2px;}
-input.ng-touched.ng-valid {border:solid green 2px;}
