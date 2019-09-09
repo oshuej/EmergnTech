@@ -6,22 +6,26 @@
     <div class="form-group">
       <input type="text" placeholder="E-mail"
              class="form-control" [(ngModel)]="userEmail" name="userEmail" #fieldEmail="ngModel" email>
-      <p *ngIf="fieldEmail.errors?.email"><small>Please enter a valid email address</small></p><br>
+      <br *ngIf="!fieldEmail.errors?.email">
+      <p *ngIf="fieldEmail.errors?.email"><small>Please enter a valid email address</small></p>
 
       <input type="login" placeholder="Login"
              class="form-control" [(ngModel)]="login" name="login" id="login" #fieldLogin="ngModel" required minlength="6"/>
-      <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p><br>
+      <br *ngIf="!fieldLogin.errors?.minlength">
+      <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p>
 
       <input type="name" placeholder="Name"
              class="form-control" [(ngModel)]="name" name="name"><br>
 
       <input type="password" placeholder="Password"
              class="form-control" ngModel name="password" #fieldPassword="ngModel" minlength="6"/>
-      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p><br>
+      <br *ngIf="!fieldPassword.errors?.minlength">
+      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p>
 
       <input type="password" placeholder="Confirm password"
              class="form-control" ngModel name="certainPassword" #certainPassword="ngModel" [equalTo]="fieldPassword"/>
-      <p *ngIf="certainPassword.errors?.equalTo"><small>Passwords do not match</small></p><br>
+      <br *ngIf="!certainPassword.errors?.minlength">
+      <p *ngIf="certainPassword.errors?.equalTo"><small>Passwords do not match</small></p>
 
     </div>
   </form>

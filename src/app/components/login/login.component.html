@@ -4,10 +4,15 @@
 <div class="container">
   <form>
     <div class="form-group">
-      <input type="text" placeholder="Login"
-             class="form-control" [(ngModel)]="login" id="login" name="login"><br>
-      <input type="text" placeholder="Password"
-             class="form-control" [(ngModel)]="password" name="password">
+      <input type="login" placeholder="Login"
+             class="form-control" [(ngModel)]="login" name="login" id="login" #fieldLogin="ngModel" required minlength="6"/>
+      <br *ngIf="!fieldLogin.errors?.minlength">
+      <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p>
+
+      <input type="password" placeholder="Password"
+             class="form-control" ngModel name="password" #fieldPassword="ngModel" minlength="6"/>
+      <br *ngIf="!fieldPassword.errors?.minlength">
+      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p><br>
     </div>
   </form>
 </div>

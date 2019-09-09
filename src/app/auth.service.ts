@@ -9,24 +9,24 @@ import { HttpClientModule} from '@angular/common/http';
 
 export class AuthService {
 
-  uri = 'http://localhost:5000/api';
-  token;
-
-  constructor(private http: HttpClient, private router: Router) { }
-  login(login22: string, password22: string) {
-    this.http.post(this.uri + '/authenticate', {login: login22, password: password22})
-      .subscribe((resp: any) => {
-        this.router.navigate(['main']);
-        localStorage.setItem('auth_token', resp.token);
-      });
-
-  }
-  logout() {
-    localStorage.removeItem('token');
-  }
-
-  public get logIn(): boolean {
-    return (localStorage.getItem('token') !== null);
-  }
+  // uri = 'http://localhost:5000/api';
+  // token;
+  //
+  // constructor(private http: HttpClient, private router: Router) { }
+  // login(login22: string, password22: string) {
+  //   this.http.post(this.uri + '/authenticate', {login: login22, password: password22})
+  //     .subscribe((resp: any) => {
+  //       this.router.navigate(['main']);
+  //       localStorage.setItem('auth_token', resp.token);
+  //     });
+  //
+  // }
+  // logout() {
+  //   localStorage.removeItem('token');
+  // }
+  //
+  // public get logIn(): boolean {
+  //   return (localStorage.getItem('token') !== null);
+  // }
 
 }
