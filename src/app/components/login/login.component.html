@@ -10,9 +10,9 @@
       <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p>
 
       <input type="password" placeholder="Password"
-             class="form-control" ngModel name="password" #fieldPassword="ngModel" minlength="6"/>
+             class="form-control" ngModel name="password" #fieldPassword="ngModel" required minlength="6"/>
       <br *ngIf="!fieldPassword.errors?.minlength">
-      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p><br>
+      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p>
     </div>
   </form>
 </div>
