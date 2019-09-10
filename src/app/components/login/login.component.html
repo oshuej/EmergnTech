@@ -3,19 +3,21 @@
 </div>
 <div class="container">
   <form>
+
     <div class="form-group">
       <input type="login" placeholder="Login"
              class="form-control" [(ngModel)]="login" name="login" id="login" #fieldLogin="ngModel" required minlength="6"/>
-      <br *ngIf="!fieldLogin.errors?.minlength">
-      <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p>
-
+      <br *ngIf="fieldLogin.valid || fieldLogin.untouched">
+      <p *ngIf="fieldLogin.invalid && fieldLogin.touched"><small>Minimum length 6 characters</small></p>
       <input type="password" placeholder="Password"
              class="form-control" ngModel name="password" #fieldPassword="ngModel" required minlength="6"/>
-      <br *ngIf="!fieldPassword.errors?.minlength">
-      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p>
+      <br *ngIf="fieldPassword.valid || fieldPassword.untouched">
+      <p *ngIf="fieldPassword.invalid && fieldPassword.touched"><small>Minimum length 6 characters</small></p>
+
     </div>
+
   </form>
 </div>
 <div style="text-align:center">
-  <button (click)="Login()" type="button" class="btn btn-success">Sign in</button>
+  <button [disabled]="fieldLogin.invalid || fieldPassword.invalid" (click)="Login()" type="button" class="btn btn-success">Sign in</button>
 </div>

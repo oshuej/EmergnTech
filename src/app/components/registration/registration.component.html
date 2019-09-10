@@ -2,30 +2,34 @@
   <h3>Registration</h3>
 </div>
 <div class="container">
-  <form>
+  <form ngNoForm>
     <div class="form-group">
-      <input type="text" placeholder="E-mail"
-             class="form-control" [(ngModel)]="userEmail" name="userEmail" id="userEmail" #fieldEmail="ngModel" required email>
-      <br *ngIf="!fieldEmail.errors?.email">
-      <p *ngIf="fieldEmail.errors?.email"><small>Please enter a valid email address</small></p>
+
+      <input type="email" placeholder="E-mail"
+             class="form-control" [(ngModel)]="user.email" id="userEmail" #fieldEmail="ngModel" required email>
+      <br *ngIf="fieldEmail.valid || fieldEmail.untouched">
+      <p *ngIf="fieldEmail.invalid && fieldEmail.touched"><small>Please enter a valid email address</small></p>
 
       <input type="login" placeholder="Login"
-             class="form-control" [(ngModel)]="login" name="login" id="login" #fieldLogin="ngModel" required minlength="6"/>
-      <br *ngIf="!fieldLogin.errors?.minlength">
-      <p *ngIf="fieldLogin.errors?.minlength"><small>Minimum length 6 characters</small></p>
+             class="form-control" [(ngModel)]="user.login" id="login" #fieldLogin="ngModel" required minlength="6"/>
+      <br *ngIf="fieldLogin.valid || fieldLogin.untouched">
+      <p *ngIf="fieldLogin.invalid && fieldLogin.touched"><small>Minimum length 6 characters</small></p>
 
       <input type="name" placeholder="Name"
-             class="form-control" [(ngModel)]="name" name="name"><br>
+             class="form-control" [(ngModel)]="user.name" id="name" #fieldName="ngModel" required minlength="2">
+      <br *ngIf="fieldName.valid || fieldName.untouched">
+      <p *ngIf="fieldName.invalid && fieldName.touched"><small>Mimimum length 2 characters</small></p>
 
       <input type="password" placeholder="Password"
-             class="form-control" ngModel name="password" id="password" #fieldPassword="ngModel" required minlength="6"/>
-      <br *ngIf="!fieldPassword.errors?.minlength">
-      <p *ngIf="fieldPassword.errors?.minlength"><small>Minimum length 6 characters</small></p>
+             class="form-control" [(ngModel)]="user.password" id="password" #fieldPassword="ngModel" required minlength="6"/>
+      <br *ngIf="fieldPassword.valid || fieldPassword.untouched">
+      <p *ngIf="fieldPassword.invalid && fieldPassword.touched"><small>Minimum length 6 characters</small></p>
 
       <input type="password" placeholder="Confirm password"
-             class="form-control" ngModel name="certainPassword" id="certainPassword" #certainPassword="ngModel" [equalTo]="fieldPassword"/>
-      <br *ngIf="!certainPassword.errors?.equalTo">
-      <p *ngIf="certainPassword.errors?.equalTo"><small>Passwords do not match</small></p>
+             class="form-control" ngModel id="certainPassword" #certainPassword="ngModel" [equalTo]="fieldPassword"/>
+
+      <br *ngIf="certainPassword.valid">
+      <p *ngIf="certainPassword.invalid && certainPassword.touched"><small>Passwords do not match</small></p>
 
     </div>
   </form>
@@ -33,6 +37,7 @@
 
 
 <div style="text-align:center">
-  <button type="submit" class="btn btn-success" routerLink="/main" (click)="register(login, fieldPassword)">Register</button> <mark></mark>
+  <button [disabled]="fieldEmail.invalid || fieldLogin.invalid || fieldName.invalid || fieldPassword.invalid || certainPassword.invalid"
+          type="submit" class="btn btn-success" routerLink="/main" (keyup.enter)="addUser()"  (click)="addUser()">Register</button> <mark></mark>
   <button class="btn btn-danger" routerLink="/">Cancel</button>
 </div>

@@ -1,22 +1,26 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+export class User {
+  email: string;
+  login: string;
+  name: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  userEmail: string;
-  login: string;
-  name: string;
-  password: string;
-  @Input() isLogin: boolean;
+  user: User = new User();
+
   constructor() { }
 
   ngOnInit() {
   }
-  register(login, password) {
-    localStorage.setItem(login, password);
-    this.isLogin = true;
+  addUser() {
+    console.log(this.user);
+    localStorage.setItem(this.user.login, this.user.password);
   }
 }
